@@ -14,15 +14,20 @@ import java.util.List;
 @AllArgsConstructor
 public class TestControlller {
 
-    private TestService testService;
+//    private TestService testService;
 
     @GetMapping
-    public ResponseEntity<List<String>> getAllContents() {
-        return ResponseEntity.ok(testService.findAll());
+    public String home() {
+        return "Hello Elice";
     }
 
-    @PostMapping
-    public ResponseEntity<TestEntity> postContent(@RequestBody String content) {
-        return ResponseEntity.ok(testService.createContent(content));
-    }
+//    @GetMapping("/content")
+//    public ResponseEntity<List<String>> getAllContents() {
+//        return ResponseEntity.ok(testService.findAll());
+//    }
+//
+//    @PostMapping("/content")
+//    public ResponseEntity<TestEntity> postContent(@RequestBody String content) {
+//        return ResponseEntity.ok(testService.createContent(content));
+//    }
 }
