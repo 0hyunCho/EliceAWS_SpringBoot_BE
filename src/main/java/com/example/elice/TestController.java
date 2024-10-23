@@ -2,10 +2,7 @@ package com.example.elice;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +13,13 @@ public class TestController {
 
 //    private TestService testService;
 
+    @CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     @GetMapping
     public String home() {
         return "Hello Elice";
     }
 
+    @CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     @GetMapping("/content")
     public ResponseEntity<List<String>> getAllContents() {
         List<String> contents = new ArrayList<>();
@@ -29,7 +28,8 @@ public class TestController {
         return ResponseEntity.ok(contents);
 //        return ResponseEntity.ok(testService.findAll());
     }
-//
+
+    @CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     @PostMapping("/content")
 //    public ResponseEntity<TestEntity> postContent(@RequestBody String content) {
     public ResponseEntity<String> postContent(@RequestBody String content) { // 이후 삭제 필요
