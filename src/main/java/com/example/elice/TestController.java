@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -32,8 +34,10 @@ public class TestController {
     @CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     @PostMapping("/content")
 //    public ResponseEntity<TestEntity> postContent(@RequestBody String content) {
-    public ResponseEntity<String> postContent(@RequestBody String content) { // 이후 삭제 필요
-        return ResponseEntity.ok("POSTED : " + content);
+    public ResponseEntity<Map<String, String>> postContent(@RequestBody String content) { // 이후 삭제 필요
+        Map<String, String> response = new HashMap<>();
+        response.put("content", content);
+        return ResponseEntity.ok(response);
 //        return ResponseEntity.ok(testService.createContent(content));
     }
 }
